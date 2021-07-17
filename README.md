@@ -8,23 +8,23 @@ A simple tool to analyze text written in python's django backend web frame work
 After you cloned this repository install the dependencies
 
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 After that makemigrations and migrate
 ```bash
-python manage.py makemigrations
+python3 manage.py makemigrations
 ```
 
 ```bash
-python manage.py migrate
+python3 manage.py migrate
 ```
 Create a superuser
 
 ```bash
-python manage.py createsuperuser
+python3 manage.py createsuperuser
 ```
 At last
 ```bash
-python manage.py runserver
+python3 manage.py runserver
 ```
 To start this webapp
