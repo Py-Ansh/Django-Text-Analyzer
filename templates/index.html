@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block title %}Text-Utilizers{% endblock title %}
+{% block success %}Welcome to Text Analyzer .{% endblock success %}
+{% block content %}
+<style>
+
+    textarea {
+        margin-top: 33px !important;
+        width: 94vw;
+        height: 280px;
+        border-width: 6px;
+        border-color: black;
+        margin-right: 12px!important;
+        font-size: 20px !important;
+        font-style: italic;
+        line-height: 30px !important;
+        font-family: none !important;
+        padding-left: 3px;
+        border-radius: 12px;
+        line-height: 3px;
+        padding-inline: 10px;
+    }
+
+    .checkboxes {
+        margin-top: 20px;
+    }
+
+    h2 {
+        margin: 8px;
+        margin-top: 25px;
+    }
+
+    #analyze {
+        border-width: 6px;
+        border-color: blue;
+        background-color: aqua;
+        margin-top: 0.5cm;
+        margin: 8px;
+        padding: 6px;
+        border-radius: 15px;
+        text-decoration: none;
+    }
+    #analyze2 {
+        border-width: 6px;
+        border-color: blue;
+        background-color: aqua;
+        margin-top: 0.5cm;
+        margin: 8px;
+        padding: 6px;
+        border-radius: 15px;
+        text-decoration: none;
+    }
+    hr{
+        height: 8px;
+    }
+
+    .footerbar {
+        background-color: rgb(49, 49, 49);
+        margin-top: 115px;
+    }
+
+    .footerbar li a {
+        padding: 3px 3px;
+        text-decoration: none;
+        color: white;
+    }
+
+    .footerbar ul {
+        overflow: auto;
+        margin-bottom: 0 !important;
+    }
+
+    .footerbar li {
+        /* float: left; */
+        list-style: none;
+        margin: 12px 20px;
+        text-align: center !important;
+    }
+</style>
+
+<script>
+    var i = 0;
+    var txt = 'Welome To Text Analizer Enter Your Text Below :-'; /* The text */
+    var speed = 50; /* The speed/duration of the effect in milliseconds */
+
+    function typeWriter() {
+        if (i < txt.length) {
+            document.getElementById("demo").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+    window.onload = typeWriter;
+</script>
+
+
+</script>
+
+<body>
+    <header>
+        <h2 id="demo"></h2>
+    </header>
+    <main>
+        <div class="container-fluid">
+            <form action="analyze/" method="post"> {% csrf_token %}
+                <!--Used To prevent others from other websites to acces our data-->
+                <textarea name="text" placeholder="Enter Your Text Here That You Want To Analyze"></textarea>
+                <br>
+                <br>
+                <p><b>You can use all of these below at once :-</b></p>
+                <input class="checkboxes" type="checkbox" name="removepunc"> <b>Remove Punctuations</b>
+                <br>
+                <input class="checkboxes" type="checkbox" name="newline"> <b>New line Remover</b>
+                <br>
+                <input class="checkboxes" type="checkbox" name="extraspaceremove"> <b>Extra Space Remover</b>
+                <br>
+                <input class="checkboxes" type="checkbox" name="removenum"> <b>Remove Numbers</b>
+                <br>
+                <hr>
+                <p><b>Use either of the 2 below at once :-</b></p>
+                <input class="checkboxes" type="checkbox" name="fullcaps"> <b>UPPER CASE</b>
+                <br>
+                <input class="checkboxes" type="checkbox" name="fullower"> <b>lower case</b>
+                <br>
+                <hr>
+                <p><b>Use this alone :-</b></p>
+                <input class="checkboxes" type="checkbox" name="charcounter"> <b>Count only Characters</b>
+                <br>
+
+                <br>
+                <button class="checkboxes" type="submit" id="analyze"><b>Analyse text</b></button>
+                <br>
+                <br>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <nav class="footerbar">
+            <ul>
+                <li><a href="#">Back To Top</a></li>
+                <li><a href="/contact">Go To Contact Page</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+</html>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+
+{% endblock content %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Analyzed Text{% endblock title %}
+
+{% block success %}Got success! Your Text Analyzed.{% endblock success %}
+{% block content %}
+<style>
+    #h1textforanalyze{
+        margin-bottom: 44px!important;
+    }
+    h2{
+        border-width: 15px;
+        margin-left: 6px;
+    }
+    #texta{
+        margin-top: 33px !important;
+        width: 94vw;
+        height: 380px;
+        border-width: 6px;
+        border-color: black;
+        margin: 8px;
+        font-size: 20px !important;
+        line-height: 30px !important;
+        font-family: none !important;
+        padding-left: 3px;
+        border-radius: 12px;
+        line-height: 3px;
+        padding-inline: 10px;
+        padding-right: 6px;
+    }
+    #h1textforanalyze{
+        margin-top: 8px;
+    }
+</style>
+
+<script>
+    var i = 0;
+    var txt = 'Your Analysed Text - {{purpose}}  :-'; /* The text */
+    var speed = 50; /* The speed/duration of the effect in milliseconds */
+
+    function typeWriter() {
+        if (i < txt.length) {
+            document.getElementById("h1textforanalyze").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+    window.onload = typeWriter;
+</script>
+
+<main>
+<h1 id="h1textforanalyze" style="margin: 20px;"></h1>
+<h4 style="margin: 20px;">Note - You can also edit your text below in the box.</h4>
+
+<h2>
+    <textarea id="texta">{{analyzed_text}}</textarea>
+</h2>
+</main>
+</body>
+
+</html>
+{% endblock content %}

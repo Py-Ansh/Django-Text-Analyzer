@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Me{% endblock title %}
+{% block success %}You Can Contact Me From Here by Filling The Form Below And Press Submit.{% endblock success %}
+
+{% block content %}
+<header>
+    {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0" role="alert">
+      <strong>{{ message }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+</header>
+
+<script>
+    var i = 0;
+    var txt = 'Want To Contact Me ?'; /* The text */
+    var speed = 50; /* The speed/duration of the effect in milliseconds */
+
+    function typeWriter() {
+        if (i < txt.length) {
+            document.getElementById("Headx").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+    window.onload = typeWriter;
+</script>
+
+<style>
+
+    .headxx {
+        margin-top: 24px !important;
+        margin-bottom: 24px !important;
+    }
+
+    #analyze {
+        border-width: 6px;
+        border-color: blue;
+        background-color: aqua;
+        margin-top: 0.5cm;
+        margin: 8px;
+        padding: 6px;
+        border-radius: 15px;
+    }
+</style>
+
+<body>
+    <header>
+        <div class="container-fluid headxx">
+            <H1 id="Headx"></H1>
+        </div>
+    </header>
+    <main>
+        <section>
+            <form action="/contact/" method="post">
+            {% csrf_token %}
+            <div class="container-fluid">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Your Name :</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name"  required maxlength="122">
+                </div>
+                <div class="mb-3">
+                    <label for="Email Address" class="form-label">Your Email address :</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email Address" required maxlength="122">
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number (With Country Code) :</label>
+                    <input type="phone" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number" required maxlength="16">
+                </div>
+                <div class="mb-3">
+                    <label for="desc" class="form-label" >Tell Me Why Do You Want To Contact Me :
+                    </label>
+                    <textarea class="form-control" id="desc" name="desc"
+                        placeholder="Why Do you Want To Contact Me?" rows="4" required></textarea>
+                </div>
+                <div class="container-fluid">
+                    <button type="submit" id="analyze"><b>Submit</b></button>
+                </div>
+            </div>
+        </form>
+        </section>
+    </main>
+</body>
+
+{% endblock content %}
